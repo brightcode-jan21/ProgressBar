@@ -1,0 +1,26 @@
+.footer {
+  bottom: 0px;
+  color: white;
+  height: 40px;
+  width: 100%;
+  background-color: #2b2c2c;
+  position: fixed;
+  bottom:0;
+
+  &__content{
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 40px;
+    padding: 0 15px;
+  }
+
+  &__reserved{
+    margin-left: 20px;
+    color:lightgrey;
+  }
+
+  &__slogan {
+      float: right;
+      color:lightgrey;
+  }
+}

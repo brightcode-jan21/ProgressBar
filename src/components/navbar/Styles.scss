@@ -1,0 +1,21 @@
+@import '../../styles/utils/breakpoints';
+
+.navbar {
+  height: 50px;
+  background: black;
+
+  &__content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    img {
+      height: 30px;
+      line-height: 40px;
+      padding: 10px 15px;
+    }
+
+    @media only screen and (max-width: $mobile) {
+      text-align: center;
+    }
+  }
+}
