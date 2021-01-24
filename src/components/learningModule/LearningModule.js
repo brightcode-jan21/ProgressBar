@@ -67,7 +67,10 @@ const LearningModule = ({ setGameStatus, gameStatus }) => {
         <div className="learningModule">
             <div className="learningModule__progressBar">
                 <div className="learningModule__progressBar--background" />
-                <div className="learningModule__progressBar--ends" />
+                <div className="learningModule__progressBar--ends">
+                    <span />
+                    <span />
+                </div>
                 <div
                     className={`learningModule__progressBar--progress ${
                         isAnimateEnd ? "" : " animate"
