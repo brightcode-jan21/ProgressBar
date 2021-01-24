@@ -43,7 +43,7 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
       setCurrentQuestionId(0);
       setIsComplete(false);
       setGameStatus('new');
-	}
+    }
 	setIsAnimateEnd(false);
   }
   let possibleAnswers = [];
@@ -53,35 +53,32 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
     })
   }
 
-  const progress = isComplete
-  ? 100
-  : ((currentQuestionId + 1) / (quizData.totalQuestions + 1)) * 100 || 0;
-const prevProgress =
-  progress - (1 / (quizData.totalQuestions + 1)) * 100 || 0;
+  const progress = isComplete ? 100 : ((currentQuestionId + 1) / (quizData.totalQuestions + 1)) * 100 || 0;
+  const prevProgress = progress - (1 / (quizData.totalQuestions + 1)) * 100 || 0;
   return (
     <div className="learningModule">
 		<div className="learningModule__progressBar">
 			<div className="learningModule__progressBar--background" />
-                <div className="learningModule__progressBar--ends">
-                    <span />
-                    <span />
-                </div>
-                <div
-                    className={`learningModule__progressBar--progress ${
-                        isAnimateEnd ? "" : " animate"
-                    }`}
-                    style={{
-                        "--progress": `${progress}%`,
-                        "--prevProgress": `${prevProgress}%`,
-                        "--displayProgress": `${
-                            isAnimateEnd ? progress : prevProgress
-                        }%`,
-                    }}
-                    onAnimationEnd={() => {
-                        setIsAnimateEnd(true);
-                    }}
-                />
-            </div>
+			<div className="learningModule__progressBar--ends">
+				<span />
+				<span />
+			</div>
+			<div
+				className={`learningModule__progressBar--progress ${
+					isAnimateEnd ? "" : " animate"
+				}`}
+				style={{
+					"--progress": `${progress}%`,
+					"--prevProgress": `${prevProgress}%`,
+					"--displayProgress": `${
+						isAnimateEnd ? progress : prevProgress
+					}%`,
+				}}
+				onAnimationEnd={() => {
+					setIsAnimateEnd(true);
+				}}
+			/>
+		</div>
       { currentQuestion.title && !isComplete &&
         <>
           <div className="learningModule__header">
