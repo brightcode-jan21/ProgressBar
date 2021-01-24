@@ -66,7 +66,15 @@ const LearningModule = ({ setGameStatus, gameStatus }) => {
                 <div className="learningModule__progressBar--ends" />
                 <div
                     className="learningModule__progressBar--progress"
-                    style={{ "--progress": `${(currentQuestionId + 1) * 20}%` }}
+                    style={{
+                        "--progress": isComplete
+                            ? "100%"
+                            : `${
+                                  ((currentQuestionId + 1) /
+                                      (quizData.totalQuestions + 1)) *
+                                  100
+                              }%`,
+                    }}
                 />
             </div>
             {currentQuestion.title && !isComplete && (
