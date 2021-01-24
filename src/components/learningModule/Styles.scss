@@ -1,6 +1,6 @@
-@import "../../styles/utils/colors";
-@import "../../styles/utils/mixins";
-@import "../../styles/utils/breakpoints";
+@import '../../styles/utils/colors';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/breakpoints';
 
 .learningModule {
     &__progressBar {
@@ -62,14 +62,14 @@
         font-size: 1.5em;
     }
 
-    &__subHeader {
+    &__subHeader{
         @include subheader;
         min-height: 42px;
         @media only screen and (max-width: $mobile) {
             display: none;
         }
     }
-
+  
     &__answerArea {
         background-color: white;
         box-shadow: 0px 0px 20px -15px;
@@ -77,7 +77,7 @@
         border-radius: 10px;
         display: grid;
         justify-content: center;
-
+        
         @media only screen and (max-width: $tablet) {
             border-radius: unset;
         }
@@ -88,7 +88,7 @@
         }
     }
 
-    &__selections {
+    &__selections{
         padding: 30px 0;
         display: grid;
         grid-auto-flow: column;
