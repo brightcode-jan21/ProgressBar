@@ -3,6 +3,54 @@
 @import '../../styles/utils/breakpoints';
 
 .learningModule {
+	&__progressBar {
+        display: grid;
+        align-items: center;
+        width: 100%;
+        @media only screen and (max-width: $mobile) {
+            width: 90%;
+            margin: 0 5% 0 5%;
+        }
+        &--background {
+            grid-column: 1;
+            grid-row: 1;
+            height: 2px;
+            background-color: $elephant-paw;
+        }
+        &--ends {
+            grid-column: 1;
+            grid-row: 1;
+            display: flex;
+            justify-content: space-between;
+            span {
+                width: 0.5em;
+                height: 0.5em;
+                border-radius: 50%;
+                background-color: $elephant-paw;
+            }
+        }
+        &--progress {
+            grid-column: 1;
+            grid-row: 1;
+            width: var(--displayProgress);
+            height: 0.5em;
+            background-color: $barney;
+            border-radius: 4px;
+
+            &.animate {
+                animation: moveProgress 2s;
+                @keyframes moveProgress {
+                    0% {
+                        width: var(--prevProgress);
+                    }
+                    100% {
+                        width: var(--progress);
+                    }
+                }
+            }
+        }
+	}
+	
     &__header {
         text-align: center;
     }
