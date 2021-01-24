@@ -3,7 +3,7 @@
 @import '../../styles/utils/breakpoints';
 
 .learningModule {
-    &__progressBar {
+	&__progressBar {
         display: grid;
         align-items: center;
         width: 100%;
@@ -49,8 +49,8 @@
                 }
             }
         }
-    }
-
+	}
+	
     &__header {
         text-align: center;
     }
@@ -85,7 +85,7 @@
         @media only screen and (max-width: $mobile) {
             background-color: unset;
             box-shadow: unset;
-		}
+        }
 
     }
 
