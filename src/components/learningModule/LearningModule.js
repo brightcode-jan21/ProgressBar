@@ -7,11 +7,9 @@ import "./Styles.scss";
 
 const LearningModule = ({ setGameStatus, gameStatus }) => {
     const [currentQuestionId, setCurrentQuestionId] = React.useState(0);
-    console.log("currentQuestionId:", currentQuestionId);
     const [quizData, setQuizData] = React.useState({});
-    console.log("quizData:", quizData);
     const [isComplete, setIsComplete] = React.useState(false);
-    console.log("isComplete:", isComplete);
+    const [isAnimateEnd, setIsAnimateEnd] = React.useState(false);
 
     let currentQuestion = quizData.questionArr
         ? quizData.questionArr[currentQuestionId]
@@ -40,7 +38,6 @@ const LearningModule = ({ setGameStatus, gameStatus }) => {
 
     const handleSubmit = () => {
         if (currentQuestionId < quizData.totalQuestions - 1) {
-            console.log(currentQuestionId);
             setCurrentQuestionId(currentQuestionId + 1);
         } else if (!isComplete) {
             setIsComplete(true);
@@ -49,6 +46,7 @@ const LearningModule = ({ setGameStatus, gameStatus }) => {
             setIsComplete(false);
             setGameStatus("new");
         }
+        setIsAnimateEnd(false);
     };
     let possibleAnswers = [];
     if (currentQuestion.possibleAnswers) {
@@ -59,21 +57,30 @@ const LearningModule = ({ setGameStatus, gameStatus }) => {
         );
     }
 
+    const progress = isComplete
+        ? 100
+        : ((currentQuestionId + 1) / (quizData.totalQuestions + 1)) * 100 || 0;
+    const prevProgress =
+        progress - (1 / (quizData.totalQuestions + 1)) * 100 || 0;
+
     return (
         <div className="learningModule">
             <div className="learningModule__progressBar">
                 <div className="learningModule__progressBar--background" />
                 <div className="learningModule__progressBar--ends" />
                 <div
-                    className="learningModule__progressBar--progress"
+                    className={`learningModule__progressBar--progress ${
+                        isAnimateEnd ? "" : " animate"
+                    }`}
                     style={{
-                        "--progress": isComplete
-                            ? "100%"
-                            : `${
-                                  ((currentQuestionId + 1) /
-                                      (quizData.totalQuestions + 1)) *
-                                  100
-                              }%`,
+                        "--progress": `${progress}%`,
+                        "--prevProgress": `${prevProgress}%`,
+                        "--displayProgress": `${
+                            isAnimateEnd ? progress : prevProgress
+                        }%`,
+                    }}
+                    onAnimationEnd={() => {
+                        setIsAnimateEnd(true);
                     }}
                 />
             </div>

@@ -15,10 +15,22 @@
         &--progress {
             position: relative;
             top: -0.3em;
-            width: var(--progress);
+            width: var(--displayProgress);
             height: 0.5em;
             background-color: $barney;
             border-radius: 4px;
+
+            &.animate {
+                animation: moveProgress 2s;
+                @keyframes moveProgress {
+                    0% {
+                        width: var(--prevProgress);
+                    }
+                    100% {
+                        width: var(--progress);
+                    }
+                }
+            }
         }
     }
 
