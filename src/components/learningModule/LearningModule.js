@@ -2,6 +2,7 @@ import React from 'react';
 import SelectionBox from '../selectionBox/SelectionBox';
 import Button from '../button/Button';
 import Intro from '../intro/Intro';
+import { ProgressBar } from "../progressBar/ProgressBar";
 
 import './Styles.scss';
 
@@ -52,33 +53,33 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
   }
 
   return (
-    <div className="learningModule">
-      { currentQuestion.title && !isComplete &&
-        <>
-          <div className="learningModule__header">
-            <div className="learningModule__title">
-              { currentQuestion.title }
-            </div>
-            <div className="learningModule__subHeader">
-              { currentQuestion.additionalInfo }
-            </div>
-          </div>
+		<div className='learningModule'>
+			{currentQuestion.title && !isComplete && (
+				<>
+					<ProgressBar currentQuestionId={currentQuestion.id} totalQuestions={quizData.totalQuestions}/>
+					<div className='learningModule__header'>
+						<div className='learningModule__title'>{currentQuestion.title}</div>
+						<div className='learningModule__subHeader'>{currentQuestion.additionalInfo}</div>
+					</div>
 
-          <div className="learningModule__answerArea">
-            <div className="learningModule__selections">
-              { possibleAnswers }
-            </div>
-            <div className="learningModule__submitButtonContainer">
-              <Button label="Submit" inactive handleSubmit={ handleSubmit } />
-            </div>
-          </div>
-        </>
-      }
-      {isComplete &&
-        <Intro message="Congratulations. You've completed this level!" buttonLabel="Play again"  buttonClick={handleSubmit} />
-      }
-    </div>
-  )
+					<div className='learningModule__answerArea'>
+						<div className='learningModule__selections'>{possibleAnswers}</div>
+						{/* add an active status to the button and disable from moving forward if not answers are checked */}
+						<div className='learningModule__submitButtonContainer'>
+							<Button label='Submit' inactive handleSubmit={handleSubmit} />
+						</div>
+					</div>
+				</>
+			)}
+			{isComplete && (
+				<Intro
+					message="Congratulations. You've completed this level!"
+					buttonLabel='Play again'
+					buttonClick={handleSubmit}
+				/>
+			)}
+		</div>
+	);
 }
 
 export default LearningModule;

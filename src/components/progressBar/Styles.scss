@@ -1,0 +1,88 @@
+@import '../../styles/utils/colors';
+@import '../../styles/utils/breakpoints';
+
+
+.progressBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  padding: .15rem;
+  height: .1rem;
+  width: 95%;
+  background-color: $elephant-paw;
+  border-radius: 1.5em;
+
+  @media only screen and (max-width: $tablet) {
+    width: 90%;
+  }
+
+  &__value {
+    position: relative;
+    // justify-self: flex-start;
+    left: -.1rem;
+    height: 1rem;
+    background-color: $barney;
+    border-radius: 3rem;
+    transition: all 0.7s ease-in-out;
+  }
+
+  &::after{
+    margin-left: auto;
+    margin-right: -.3rem;
+    align-self: center;
+    content: '';
+    border-radius: 50%;
+    background-color: $elephant-paw;
+    height: .9rem;
+    width: .9rem;
+  }
+}
+//   display: flex;
+//     content: '';
+//     // display: flex;
+//     align-items: center;
+//     position: absolute;
+//     top: -0.3em;
+//     left: -0.1em;
+//     bottom: 0em;
+//     min-width: 2rem;
+//     max-width: calc(100% - 1em);
+//     background-color: $barney;
+//     border-radius: 1em 0 0 1em;
+//     padding: 0.4em;
+//     transition: 0.5s ease-in-out all;
+//     @media only screen and (max-width: $mobile) {
+//       padding: 0.8em;
+//       top: -0.6em;
+//       left: -0.1em;
+//       bottom: 0.5em;
+//     }
+//   }
+
+//   &::after {
+//     content:'';
+//     width: 10px;
+//     height: 10px;
+//     position: absolute;
+//     top: -0.2em;
+//     right: -0.1em;
+//     border-radius: 50%;
+//     background-color: $elephant-paw;
+//     @media only screen and (max-width: $mobile) {
+//       width: 15px;
+//       height: 15px;
+//       top: -0.3em;
+//     }
+//   }
+
+//   @media only screen and (max-width: $tablet) {
+//     margin: 15px;
+//   }
+  
+//   @media only screen and (max-width: $mobile) {
+//     margin: 15px;
+//     height: 0.3em;   
+//   }
+
+// } 
