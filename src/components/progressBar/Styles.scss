@@ -1,0 +1,39 @@
+@import '../../styles/utils/colors';
+@import '../../styles/utils/breakpoints';
+
+
+.progressBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  padding: .15rem;
+  height: .1rem;
+  width: 95%;
+  background-color: $elephant-paw;
+  border-radius: 1.5em;
+
+  @media only screen and (max-width: $tablet) {
+    width: 90%;
+  }
+
+  &__value {
+    position: relative;
+    left: -.1rem;
+    height: 1rem;
+    background-color: $barney;
+    border-radius: 3rem;
+    transition: all 0.7s ease-in-out;
+  }
+
+  &::after{
+    margin-left: auto;
+    margin-right: -.3rem;
+    align-self: center;
+    content: '';
+    border-radius: 50%;
+    background-color: $elephant-paw;
+    height: .9rem;
+    width: .9rem;
+  }
+}
