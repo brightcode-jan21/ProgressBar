@@ -1,0 +1,32 @@
+@import '../../styles/utils/colors';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/breakpoints';
+
+.rectangle-bg {
+  border-top: 3px solid $elephant-paw;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 40px auto 0;
+  width: 80%;
+  height: 5px;
+  position: relative;
+  border-radius: 50px;
+}
+
+.rectangle-bg:after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: $elephant-paw;
+  border-radius: 5px;
+  position: absolute;
+  top: -6px;
+  right: 0;
+}
+
+.filledStyle {
+  margin: -9px 0;
+  height: 5px;
+  background: $barney;
+  border-radius: inherit;
+}
