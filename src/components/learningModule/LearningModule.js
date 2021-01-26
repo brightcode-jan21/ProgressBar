@@ -20,6 +20,20 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
     console.log(gameStatus);
   },[gameStatus]);
 
+  console.log(quizData)
+  console.log(currentQuestionId)
+
+  const progressBar = () => {
+    const progress = (currentQuestionId+1)/(quizData.totalQuestions + 1)*100
+      
+    return(
+        <div className ='learningModule__outerBar'>
+          <div className ='learningModule__innerBarOne' style={{width:`${progress}%`}}></div>
+          <div className ='learningModule__innerBar' style={{width:`${100-progress}%`}}></div>
+          <div className='learningModule__endPoint'></div>
+        </div>
+    )
+  }
 
   const getQuizData=()=>{
     fetch("http://localhost:8080/problems")
@@ -53,6 +67,7 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
 
   return (
     <div className="learningModule">
+       {!isComplete && progressBar()}
       { currentQuestion.title && !isComplete &&
         <>
           <div className="learningModule__header">
