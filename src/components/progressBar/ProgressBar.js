@@ -12,10 +12,6 @@ const ProgressBar = (props) => {
 
     return (
         <div className='rectangle-bg'>
-
-            {console.log("Completed: " + props.totalCompleted)}
-            {console.log("Total: " + props.isComplete)}
-            {/*{console.log("Here: " + parseFloat(completed / totalQuestions * 100))}*/}
             <div className="filledStyle" style={filledStyle}>
             </div>
         </div>
