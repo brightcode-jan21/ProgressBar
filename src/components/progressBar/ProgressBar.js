@@ -4,8 +4,6 @@ import './Styles.scss';
 
 const ProgressBar = (props) => {
 
-    const [currentQuestion, setCurrentQuestion] = React.useState(1);
-
     const filledStyle = {
         width: `${props.totalCompleted / props.totalQuestions * 100}%`
     }
@@ -15,13 +13,11 @@ const ProgressBar = (props) => {
         else return {width: '100%'}
     }
 
-
     React.useEffect(() => {
             chooseStyle()
         }
         , [props.totalCompleted]
     )
-
 
     return (
         <div className='rectangle-bg'>
