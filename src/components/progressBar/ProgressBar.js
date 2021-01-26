@@ -5,12 +5,13 @@ import './Styles.scss';
 const ProgressBar = (props) => {
 
     const filledStyle = {
-        width: `${props.totalCompleted / props.totalQuestions * 100}%`
+        width: `${props.totalCompleted / props.totalQuestions * 100}%`,
+        transition: 'width 1s ease-in-out'
     }
 
     const chooseStyle = () => {
         if (!props.isComplete) return filledStyle;
-        else return {width: '100%'}
+        else return {width: '100%', transition: 'width 1s ease-in-out'}
     }
 
     React.useEffect(() => {
