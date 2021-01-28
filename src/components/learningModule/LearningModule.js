@@ -56,11 +56,13 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
   let progress = 0; 
   if(quizData.totalQuestions){
     progress = (Math.round((currentQuestionId+1)*100/(quizData.totalQuestions+1)));
+  }if(isComplete){
+    progress=100;
   }
 
   return (
     <div className="learningModule">
-    <ProgressBar progress={progress} isComplete={isComplete}/>
+    <ProgressBar progress={progress} />
       { currentQuestion.title && !isComplete &&
         <>
           <div className="learningModule__header">

@@ -2,9 +2,9 @@ import React from 'react';
 
 import './Styles.scss';
 
-const ProgressBar = ({progress, isComplete})=>{ 
+const ProgressBar = ({progress})=>{ 
 
-  let barStyle = isComplete?  {width: `100%`,  borderRadius: "8px"} : {width: `${progress}%`};
+  let barStyle = progress===100?  {width: `${progress}%`,  borderRadius: "8px"} : {width: `${progress}%`};
 
   return(
     <>  
