@@ -4,7 +4,7 @@ import './Styles.scss';
 
 const ProgressBar = ({progress})=>{ 
 
-  let barStyle = progress===100?  {width: `${progress}%`,  borderRadius: "8px"} : {width: `${progress}%`};
+  let barStyle = progress===100 ? {width: `${progress}%`,  borderRadius: "8px"} : {width: `${progress}%`};
 
   return(
     <>  

@@ -10,7 +10,7 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
   const [currentQuestionId, setCurrentQuestionId] = React.useState(0);
   const [quizData, setQuizData] = React.useState({});
   
-  const isComplete = currentQuestionId && currentQuestionId>=quizData.totalQuestions? true: false;
+  const isComplete = currentQuestionId && currentQuestionId>=quizData.totalQuestions;
 
   let currentQuestion = quizData.questionArr ? quizData.questionArr[currentQuestionId]: {};
   
