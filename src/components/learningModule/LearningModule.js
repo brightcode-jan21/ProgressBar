@@ -2,6 +2,7 @@ import React from 'react';
 import SelectionBox from '../selectionBox/SelectionBox';
 import Button from '../button/Button';
 import Intro from '../intro/Intro';
+import ProgressBar from '../progressBar/ProgressBar';
 
 import './Styles.scss';
 
@@ -9,7 +10,7 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
   const [currentQuestionId, setCurrentQuestionId] = React.useState(0);
   const [quizData, setQuizData] = React.useState({});
   const [isComplete, setIsComplete] = React.useState(false);
-  
+
   let currentQuestion = quizData.questionArr ? quizData.questionArr[currentQuestionId]: {};
   
   React.useEffect(()=>{
@@ -51,8 +52,17 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
     })
   }
 
+  // update progress status for ProgressBar Component 
+  let progress = 0; 
+  if(quizData.totalQuestions){
+    progress = (Math.round((currentQuestionId+1)*100/(quizData.totalQuestions+1)));
+  }if(isComplete){
+    progress=100;
+  }
+
   return (
     <div className="learningModule">
+    <ProgressBar progress={progress} />
       { currentQuestion.title && !isComplete &&
         <>
           <div className="learningModule__header">
