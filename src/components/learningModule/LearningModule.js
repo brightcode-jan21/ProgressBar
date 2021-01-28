@@ -9,7 +9,8 @@ import './Styles.scss';
 const LearningModule = ({setGameStatus, gameStatus}) => {
   const [currentQuestionId, setCurrentQuestionId] = React.useState(0);
   const [quizData, setQuizData] = React.useState({});
-  const [isComplete, setIsComplete] = React.useState(false);
+  
+  const isComplete = currentQuestionId && currentQuestionId>=quizData.totalQuestions? true: false;
 
   let currentQuestion = quizData.questionArr ? quizData.questionArr[currentQuestionId]: {};
   
@@ -34,23 +35,23 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
   }
 
   const handleSubmit=()=> {
-    if(currentQuestionId < quizData.totalQuestions-1){
-      console.log(currentQuestionId)
-      setCurrentQuestionId(currentQuestionId+1);
-    } else if (!isComplete) {
-      setIsComplete(true);
-    } else {
-      setCurrentQuestionId(0);
-      setIsComplete(false);
-      setGameStatus('new');
-    }
+    
+      if(isComplete){
+        setCurrentQuestionId(0);
+        setGameStatus('new');
+      }else{
+        setCurrentQuestionId(currentQuestionId+1);
+      }
+
   }
   let possibleAnswers = [];
-  if(currentQuestion.possibleAnswers){
+  if(currentQuestion && currentQuestion.possibleAnswers){
     possibleAnswers = currentQuestion.possibleAnswers.map((answer, index) => {
       return <SelectionBox id={index} key={index} answer={answer} />
     })
   }
+
+
 
   // update progress status for ProgressBar Component 
   let progress = 0; 
@@ -59,11 +60,13 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
   }if(isComplete){
     progress=100;
   }
+  
+  console.log(currentQuestionId)
 
   return (
     <div className="learningModule">
     <ProgressBar progress={progress} />
-      { currentQuestion.title && !isComplete &&
+      { !isComplete && currentQuestion.title && 
         <>
           <div className="learningModule__header">
             <div className="learningModule__title">
@@ -84,7 +87,7 @@ const LearningModule = ({setGameStatus, gameStatus}) => {
           </div>
         </>
       }
-      {isComplete &&
+      { isComplete &&
         <Intro message="Congratulations. You've completed this level!" buttonLabel="Play again"  buttonClick={handleSubmit} />
       }
     </div>
